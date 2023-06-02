@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>W3.CSS Template</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet"
+    href="https://www.w3schools.com/lib/w3-theme-black.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <style>
+    html,
+    body,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      font-family: "Roboto", sans-serif;
+    }
+
+    .w3-sidebar {
+      z-index: 3;
+      width: 250px;
+      top: 43px;
+      bottom: 0;
+      height: inherit;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Navbar -->
+  <div class="w3-top">
+    <div class="w3-bar w3-theme w3-top w3-left-align w3-large">
+      <a class="w3-bar-item w3-button w3-right w3-hide-large w3-hover-white w3-large w3-theme-l1"
+        href="javascript:void(0)" onclick="w3_open()"><i
+          class="fa fa-bars"></i></a>
+      <a href="#" class="w3-bar-item w3-button w3-theme-l1">Logo</a>
+      <a href="#"
+        class="w3-bar-item w3-button w3-hide-small w3-hover-white">About</a>
+      <a href="#"
+        class="w3-bar-item w3-button w3-hide-small w3-hover-white">Values</a>
+      <a href="#"
+        class="w3-bar-item w3-button w3-hide-small w3-hover-white">News</a>
+      <a href="#"
+        class="w3-bar-item w3-button w3-hide-small w3-hover-white">Contact</a>
+      <a href="#"
+        class="w3-bar-item w3-button w3-hide-small w3-hide-medium w3-hover-white">Clients</a>
+      <a href="#"
+        class="w3-bar-item w3-button w3-hide-small w3-hide-medium w3-hover-white">Partners</a>
+    </div>
+  </div>
+
+  <!-- Sidebar -->
+  <nav
+    class="w3-sidebar w3-bar-block w3-collapse w3-large w3-theme-l5 w3-animate-left"
+    id="mySidebar">
+    <a href="javascript:void(0)" onclick="w3_close()"
+      class="w3-right w3-xlarge w3-padding-large w3-hover-black w3-hide-large"
+      title="Close Menu">
+      <i class="fa fa-remove"></i>
+    </a>
+    <h4 class="w3-bar-item"><b>Menu</b></h4>
+    <a class="w3-bar-item w3-button w3-hover-black" href="#">Link</a>
+    <a class="w3-bar-item w3-button w3-hover-black" href="#">Link</a>
+    <a class="w3-bar-item w3-button w3-hover-black" href="#">Link</a>
+    <a class="w3-bar-item w3-button w3-hover-black" href="#">Link</a>
+  </nav>
+
+  <!-- Overlay effect when opening sidebar on small screens -->
+  <div class="w3-overlay w3-hide-large" onclick="w3_close()"
+    style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+
+  <!-- Main content: shift it to the right by 250 pixels when the sidebar is visible -->
+  <div class="w3-main" style="margin-left:250px">
+
+    <div class="w3-row w3-padding-64">
+      <div class="w3-twothird w3-container">
+        <h1 class="w3-text-teal">Heading</h1>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+          aliquip ex ea commodo consequat. Lorem ipsum
+          dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+          incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+          quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+          commodo consequat.</p>
+      </div>
+      <div class="w3-third w3-container">
+        <p class="w3-border w3-padding-large w3-padding-32 w3-center">AD</p>
+        <p class="w3-border w3-padding-large w3-padding-64 w3-center">AD</p>
+      </div>
+    </div>
+
+
+    <div class="w3-row w3-padding-64">
+      <div class="w3-twothird w3-container">
+        <h1 class="w3-text-teal"> ¿Qué es un ataque DoS?</h1>
+        <p class="w3-text-teal">Un ataque de Denegación de Servicio (DoS, por
+          sus siglas en inglés) es un tipo de ataque cibernético en el cual un
+          sistema o red es inundado con una gran cantidad de solicitudes de
+          forma simultánea, superando su capacidad de procesamiento y dejándolo
+          inoperativo para los usuarios legítimos.</p>
+
+        <h2 class="w3-text-teal">Cómo funciona</h2>
+        <p class="w3-text-teal">El ataque DoS se basa en abrumar el sistema
+          objetivo con un tráfico excesivo, de modo que no pueda responder de
+          manera efectiva a las solicitudes legítimas. Esto se logra mediante el
+          envío masivo de solicitudes de conexión, peticiones maliciosas o datos
+          inútiles al sistema objetivo.</p>
+
+        <h2 class="w3-text-teal">Tipos de ataque DoS</h2>
+        <p class="w3-text-teal">Existen diferentes variantes de ataques DoS,
+          entre las más comunes se encuentran:</p>
+        <ul class="w3-text-teal">
+          <li>Ataques de inundación de tráfico: Consisten en enviar un gran
+            volumen de tráfico al sistema objetivo, agotando los recursos de red
+            y dejándolo inaccesible para los usuarios legítimos. Algunos
+            ejemplos son el ataque SYN flood, UDP flood y HTTP flood.</li>
+          <li>Ataques de agotamiento de recursos: Se enfocan en consumir los
+            recursos del sistema objetivo, como memoria, capacidad de
+            procesamiento o ancho de banda, hasta que no pueda responder a las
+            solicitudes legítimas. Un ejemplo es el ataque de saturación de la
+            tabla de conexiones TCP.</li>
+          <li>Ataques de vulnerabilidad del sistema: Aprovechan las debilidades
+            o vulnerabilidades conocidas en el sistema objetivo para
+            sobrecargarlo o hacerlo fallar. Por ejemplo, el ataque Buffer
+            Overflow o el ataque de consulta DNS amplificada.</li>
+        </ul>
+
+        <h2 class="w3-text-teal">Impacto de un ataque DoS</h2>
+        <p class="w3-text-teal">Los ataques DoS pueden tener diversas
+          consecuencias negativas, tanto para los usuarios como para las
+          organizaciones afectadas. Algunos de los impactos más comunes
+          incluyen:</p>
+        <ul class="w3-text-teal">
+          <li>Pérdida de servicio: El sistema objetivo se vuelve inaccesible
+            para los usuarios legítimos, lo que puede ocasionar interrupciones
+            en los negocios, pérdida de productividad y daño a la reputación de
+            la organización.</li>
+          <li>Pérdida de datos: En algunos casos, los ataques DoS pueden estar
+            acompañados de intentos de robo de información sensible o
+            destrucción de datos, lo que puede tener consecuencias graves para
+            la seguridad de la organización.</li>
+          <li>Costos financieros: Los ataques DoS pueden generar costos
+            adicionales para las organizaciones afectadas, como gastos en la
+            mitigación del ataque, pérdida de ingresos debido a la interrupción
+            del servicio y posibles demandas legales.</li>
+        </ul>
+      </div>
+      <div class="w3-third w3-container">
+        <p class="w3-border w3-padding-large w3-padding-32 w3-center">AD</p>
+        <p class="w3-border w3-padding-large w3-padding-64 w3-center">AD</p>
+      </div>
+    </div>
+
+
+
+    <div class="w3-row w3-padding-64">
+      <div class="w3-twothird w3-container">
+        <h1 class="w3-text-teal">Maneras de implementar ataques DoS</h1>
+        <p>Existen varias maneras de hacer este tipo de ataques </p>
+      </div>
+    </div>
+
+    <div class="w3-row w3-padding-64">
+      <div class="w3-twothird w3-container">
+        <h1 class="w3-text-teal">Herramientas solicitadas</h1>
+        <p>Se solcitó documentación sobre las siguientes herramientas</p>
+        <h3>HPing3</h3>
+        <p>Para instalar HPing basta con hacer <code>apt install hping3</code>,
+          despues es posible hacer algunos comandos para hacer pruebas sobre la
+          red</p>
+        <p>
+          Para mandar un paquete simple
+          <code>hping3 -p 80 <it>ip</it></code>
+        </p>
+        <p>
+          Para scannear puertos
+          <code>hping3 -S —-scan 21-500 <it>ip</it></code>
+        </p>
+        <p>
+          Para atacar
+          <code>hping3 -S -p 80 —-flood <it>ip</it></code>
+        </p>
+        <p>
+          Para atacar con multiples IPs
+          <code>hping3 -S -p 80  --flood --rand-source <it>ip</it></code>
+        </p>
+
+
+
+        <h3>Colasoft PacketBuilder</h3>
+        <p>
+          Descargar de <a
+            href="https://www.colasoft.com/download/products/download_packet_builder.php">https://www.colasoft.com/download/products/download_packet_builder.php</a>
+        </p>
+
+        <p>Packet builder permite elegir entre diferentes plantillas, que a su
+          vez tienen algunos parametros a elegir, como por ejemplo</p>
+
+        <ul>
+          <li>TCP</li>
+          <ul>
+            <li>Origen</li>
+            <li>Destino</li>
+            <li>Tamaño</li>
+
+          </ul>
+          <li>UDP</li>
+          <ul>
+            <li>Origen</li>
+            <li>Destino</li>
+            <li>Tamaño</li>
+          </ul>
+          <li>ARP</li>
+          <ul>
+            <li>MAC origen</li>
+            <li>Origen IP</li>
+            <li>MAC destino</li>
+            <li>Ip destino</li>
+            <li>Tamaño de paquete</li>
+          </ul>
+        </ul>
+
+
+        <h3>Colasoft</h3>
+        <p>Descargar CAPSA de aqui: <a
+            href="https://www.colasoft.com/capsa/">https://www.colasoft.com/capsa/</a>,
+          y registrarse para habilitar el periódo de prueba</p>
+
+        <p>Las caracteristicas de CAPSA incluyen, pero no se limitan a:</p>
+
+        <ul>
+          <li>Capturadora en tiempo real de paquetes</li>
+          <li>Analisis avanzado de protocolos</li>
+          <li>Filtros sobre los paquetes</li>
+        </ul>
+
+
+        <h3>Nagios Network Analyzer</h3>
+        <p></p>
+
+
+
+
+
+        <h3>WireShark</h3>
+        <p>Instalado por defecto en Kali Linux, se puede descargar desde <a
+            href="https://www.wireshark.org/download.html">https://www.wireshark.org/download.html</a>
+        </p>
+
+
+        <h1 class="w3-text-teal">Instalación y funciones de Wireshark</h1>
+        <p class="w3-text-teal">Wireshark es una herramienta de código
+          abierto ampliamente utilizada para el análisis de tráfico de red.
+          Permite capturar y analizar los paquetes de datos que se
+          transmiten a través de una red, lo que proporciona información
+          valiosa sobre el tráfico y la seguridad de la red. A continuación,
+          se describe cómo instalar Wireshark y se detallan algunas de sus
+          funciones principales:</p>
+
+        <h2 class="w3-text-teal">Instalación de Wireshark en Debian</h2>
+        <p class="w3-text-teal">Si estás utilizando Debian, puedes instalar
+          Wireshark desde la terminal utilizando el administrador de
+          paquetes apt. Sigue estos pasos:</p>
+        <ol class="w3-text-teal">
+          <li>Abre la terminal en tu sistema Debian.</li>
+          <li>Ejecuta el siguiente comando para actualizar la lista de
+            paquetes:</li>
+        </ol>
+        <pre class="w3-text-teal">
+  <code>sudo apt update</code>
+</pre>
+        <ol class="w3-text-teal">
+          <li>A continuación, ejecuta el siguiente comando para instalar
+            Wireshark:</li>
+        </ol>
+        <pre class="w3-text-teal">
+  <code>sudo apt install wireshark</code>
+</pre>
+        <ol class="w3-text-teal">
+          <li>El sistema te solicitará ingresar tu contraseña de
+            administrador. Proporciónala y presiona Enter.</li>
+          <li>Una vez completada la instalación, podrás ejecutar Wireshark
+            desde la terminal usando el comando:</li>
+        </ol>
+        <pre class="w3-text-teal">
+  <code>wireshark</code>
+</pre>
+        <p class="w3-text-teal">Ten en cuenta que es posible que debas
+          reiniciar tu sistema o iniciar sesión nuevamente para poder
+          capturar paquetes de red sin privilegios de superusuario.</p>
+
+        <h2 class="w3-text-teal">Funciones principales de Wireshark</h2>
+        <p class="w3-text-teal">Wireshark ofrece una amplia gama de
+          funciones para el análisis de tráfico de red. Algunas de las
+          funciones principales son:</p>
+        <ul class="w3-text-teal">
+          <li><strong>Captura de paquetes:</strong> Wireshark permite
+            capturar paquetes de datos en tiempo real a través de la
+            interfaz de red seleccionada. Esto te permite analizar el
+            tráfico y examinar los detalles de los paquetes.</li>
+          <li><strong>Análisis de protocolos:</strong> Wireshark proporciona
+            una amplia compatibilidad con una variedad de protocolos de red,
+            lo que te permite examinar y decodificar paquetes basados en
+            protocolos específicos, como TCP/IP, HTTP, DNS, etc.</li>
+          <li><strong>Filtrado de paquetes:</strong> Puedes aplicar filtros
+            personalizados para enfocarte en paquetes específicos o tipos de
+            tráfico. Esto te ayuda a analizar y encontrar información
+            relevante de manera más eficiente.</li>
+          <li><strong>Estadísticas y gráficos:</strong> Wireshark ofrece
+            diversas estadísticas y gráficos para visualizar y analizar el
+            tráfico de red. Puedes obtener información sobre la utilización
+            de ancho de banda, las direcciones IP más frecuentes, los
+            tiempos de respuesta, entre otros.</li>
+          <li><strong>Análisis de seguridad:</strong> Wireshark también
+            puede ser utilizado para el análisis de seguridad de red. Puedes
+            detectar y analizar posibles ataques, como escaneos de puertos,
+            ataques de denegación de servicio (DoS) o intentos de intrusión.
+          </li>
+        </ul>
+
+
+
+
+        <h3>Network Performance Monitor</h3>
+
+        <p>Solarwinds, descargar de <a
+            href="https://www.solarwinds.com/es/network-performance-monitor">https://www.solarwinds.com/es/network-performance-monitor</a>
+        </p>
+
+        <p></p>
+        <h3>nmap</h3>
+
+        <div class="w3-row w3-padding-64">
+          <h1 class="w3-text-teal">Nmap: Escaneo de Redes y sus Utilidades
+          </h1>
+          <p class="w3-text-teal">Nmap (Network Mapper) es una poderosa
+            herramienta de escaneo de redes utilizada por los administradores
+            de redes y seguridad para explorar y auditar sistemas y redes. A
+            continuación, se describen algunas de las funcionalidades clave de
+            Nmap y ejemplos de su utilidad para los administradores de redes:
+          </p>
+
+          <h2 class="w3-text-teal">Funcionalidades principales de Nmap</h2>
+          <p class="w3-text-teal">Nmap ofrece una amplia gama de
+            funcionalidades para escanear y mapear redes. Algunas de sus
+            características más destacadas son:</p>
+          <ul class="w3-text-teal">
+            <li><strong>Escaneo de puertos:</strong> Nmap puede escanear los
+              puertos abiertos en un sistema o una red para identificar
+              servicios y aplicaciones en ejecución.</li>
+            <li><strong>Detección de sistemas operativos:</strong> Utilizando
+              técnicas de reconocimiento de huellas digitales, Nmap puede
+              determinar el sistema operativo utilizado por un host remoto.
+            </li>
+            <li><strong>Escaneo de versiones de servicios:</strong> Nmap puede
+              identificar las versiones y las configuraciones de los servicios
+              y aplicaciones que se ejecutan en los puertos abiertos.</li>
+            <li><strong>Escaneo de subredes y rangos de IP:</strong> Nmap
+              puede explorar y escanear redes completas o rangos de
+              direcciones IP para descubrir hosts activos y puertos abiertos.
+            </li>
+            <li><strong>Escaneo furtivo (Stealth Scanning):</strong> Nmap
+              tiene la capacidad de realizar escaneos sigilosos para minimizar
+              la detección y el impacto en los sistemas objetivo.</li>
+            <li><strong>Escaneo de scripts (Scripting Engine):</strong> Nmap
+              proporciona un potente lenguaje de scripting que permite a los
+              administradores personalizar y automatizar escaneos para
+              realizar tareas específicas.</li>
+          </ul>
+
+          <h2 class="w3-text-teal">Ejemplos de Utilidad para los
+            Administradores de Redes</h2>
+          <p class="w3-text-teal">Nmap es una herramienta invaluable para los
+            administradores de redes, ya que les permite realizar una variedad
+            de tareas esenciales de monitoreo y seguridad. Aquí hay algunos
+            ejemplos de cómo los administradores de redes pueden utilizar
+            Nmap:</p>
+          <ul class="w3-text-teal">
+            <li><strong>Descubrimiento de hosts y topología de red:</strong>
+              Nmap puede ayudar a los administradores a identificar y mapear
+              hosts activos dentro de una red, lo que permite una mejor
+              comprensión de la topología de la red y la detección de
+              dispositivos no autorizados.</li>
+            <li><strong>Análisis de seguridad:</strong> Nmap puede utilizarse
+              para realizar escaneos de seguridad en busca de puertos abiertos
+              y servicios mal configurados que puedan ser vulnerables a
+              ataques.</li>
+            <li><strong>Auditoría de conformidad:</strong> Los administradores
+              pueden utilizar Nmap para asegurarse de que los sistemas cumplen
+              con las políticas de seguridad establecidas, como verificar que
+              solo se estén ejecutando los servicios y puertos autorizados.
+            </li>
+            <li><strong>Monitoreo de disponibilidad:</strong> Al escanear
+              regularmente los puertos de los sistemas, los administradores
+              pueden detectar cambios en la disponibilidad de los servicios y
+              solucionar problemas de conectividad.</li>
+            <li><strong>Actualización de inventario de red:</strong> Nmap
+              puede ayudar a mantener un inventario actualizado de los
+              sistemas y servicios que se encuentran en una red, lo que
+              facilita la gestión y el mantenimiento de la infraestructura de
+              red.</li>
+          </ul>
+        </div>
+
+
+        <p> Esta herramienta se encuentra instalada por defecto en Kali Linux,
+          pero, es posible descargarla manualmente a traves de su pagina
+          oficial, con instrucciones dependiendo del sistema operativo, aqui: <a
+            href="https://nmap.org/book/inst-linux.html">
+            https://nmap.org/book/inst-linux.html </a></p>
+
+
+
+
+
+        <p>Algunas utilidades con NMAP</p>
+        <ul>
+          <li> Escaneo de puertos
+            <code> nmap -sV -p 1-65535 192.168.1.1/24 </code>
+          </li>
+
+        </ul>
+
+
+        <p></p>
+
+        <div class="w3-row w3-padding-64">
+
+          <h1 class="w3-text-teal">Nmap: Escaneo de Redes y Ejemplos de Comandos
+          </h1>
+          <h2 class="w3-text-teal">Instalación de Nmap en Debian</h2>
+          <p class="w3-text-teal">Para instalar Nmap en Debian, sigue estos
+            pasos:</p>
+          <ol class="w3-text-teal">
+            <li>Abre la terminal en tu sistema Debian.</li>
+            <li>Ejecuta el siguiente comando para actualizar la lista de
+              paquetes:</li>
+          </ol>
+          <pre class="w3-text-teal">
+              <code>sudo apt update</code>
+            </pre>
+          <ol class="w3-text-teal">
+            <li>A continuación, ejecuta el siguiente comando para instalar Nmap:
+            </li>
+          </ol>
+          <pre class="w3-text-teal">
+              <code>sudo apt install nmap</code>
+            </pre>
+          <p class="w3-text-teal">Una vez completada la instalación, Nmap estará
+            listo para su uso.</p>
+
+          <h2 class="w3-text-teal">Ejemplos de Comandos de Nmap</h2>
+          <p class="w3-text-teal">A continuación, se presentan algunos ejemplos
+            de comandos de Nmap que pueden resultar útiles para los
+            administradores de redes:</p>
+          <pre class="w3-text-teal">
+              <code># Escaneo de puertos en un host específico
+              nmap host
+        
+              # Escaneo de una red específica
+              nmap network
+        
+              # Escaneo de puertos TCP y UDP
+              nmap -p port(s) host
+        
+              # Escaneo de puertos y detección de sistemas operativos
+              nmap -A host
+        
+              # Escaneo sigiloso (stealth scanning)
+              nmap -sS host
+        
+              # Escaneo rápido de los 1000 puertos más comunes
+              nmap -F host
+        
+              # Escaneo utilizando scripts de NSE (Nmap Scripting Engine)
+              nmap --script script host </code>
+            </pre>
+
+          <h2 class="w3-text-teal">Parámetros Comunes de Nmap</h2>
+          <p class="w3-text-teal">Aquí tienes algunos parámetros comunes que se
+            pueden utilizar con Nmap:</p>
+          <ul class="w3-text-teal">
+            <li><strong>-p <port(s)>:</strong> Especifica los puertos a
+              escanear. Pueden ser rangos (por ejemplo, 1-100) o puertos
+              individuales.</li>
+            <li><strong>-A:</strong> Realiza un escaneo agresivo que incluye
+              detección de sistemas operativos, escaneo de versiones de
+              servicios y detección de scripts.</li>
+            <li><strong>-sS:</strong> Realiza un escaneo sigiloso utilizando TCP
+              SYN Scan.</li>
+            <li><strong>-F:</strong> Realiza un escaneo rápido de los 100
+              puertos más comunes.</li>
+            <li><strong>--script script:</strong> Ejecuta un script específico
+              del Nmap Scripting Engine.</li>
+          </ul>
+        </div>
+
+      </div>
+
+    </div>
+
+
+
+
+
+
+    <div class="w3-row w3-padding-64">
+      <div class="w3-twothird w3-container">
+        <h1 class="w3-text-teal">Implementación de un Ataque DoS con hping3</h1>
+        <p class="w3-text-teal">En esta sección, exploraremos cómo implementar
+          un ataque de Denegación de Servicio (DoS) utilizando hping3, una
+          herramienta de hacking y testing de redes. El comando específico que
+          utilizaremos es:</p>
+        <pre class="w3-text-teal">
+          <code>hping3 -p &lt;puerto&gt; --syn --random-source -d &lt;int&gt;</code>
+        </pre>
+        <p class="w3-text-teal">Este comando permite sobrecargar un servidor
+          enviando paquetes TCP SYN con direcciones IP de origen aleatorias y un
+          tamaño de datos específico.</p>
+
+        <h2 class="w3-text-teal">Funcionamiento del Ataque DoS con hping3</h2>
+        <p class="w3-text-teal">El objetivo de un ataque de Denegación de
+          Servicio (DoS) es inundar un servidor con un gran número de
+          solicitudes, abrumándolo y haciendo que sea incapaz de responder a
+          otras solicitudes legítimas. En este caso, utilizaremos hping3 para
+          enviar un gran volumen de paquetes TCP SYN al servidor objetivo.</p>
+        <p class="w3-text-teal">El comando `hping3 -p <puerto> --syn
+            --random-source -d <int>` realiza lo siguiente:</p>
+        <ul class="w3-text-teal">
+          <li>Utiliza `-p <puerto>` para especificar el puerto de destino al que
+              se enviarán los paquetes.</li>
+          <li>El flag `--syn` indica que los paquetes enviados serán del tipo
+            TCP SYN, que se utiliza para iniciar una conexión TCP.</li>
+          <li>El flag `--random-source` indica que se utilizarán direcciones IP
+            de origen aleatorias para cada paquete enviado, dificultando la
+            identificación del atacante.</li>
+          <li>El parámetro `-d <int>` establece el tamaño de datos de cada
+              paquete en bytes.</li>
+        </ul>
+
+        <h2 class="w3-text-teal">Precaución y Responsabilidad</h2>
+        <p class="w3-text-teal">Es importante tener en cuenta que la realización
+          de ataques de Denegación de Servicio (DoS) está estrictamente
+          prohibida y es ilegal sin el consentimiento explícito del propietario
+          del sistema objetivo. Este ejemplo se proporciona únicamente con fines
+          educativos para comprender cómo funcionan los ataques DoS y cómo se
+          pueden defender.</p>
+        <p class="w3-text-teal">Siempre debes utilizar tus conocimientos de
+          manera ética y responsable, y respetar las leyes y regulaciones
+          vigentes.</p>
+      </div>
+    </div>
+
+
+
+
+    <div class="w3-row">
+      <div class="w3-twothird w3-container">
+        <h1 class="w3-text-teal">Heading</h1>
+      </div>
+
+      <div class="w3-row w3-padding-64">
+        <div class="w3-twothird w3-container">
+          <h1 class="w3-text-teal">Heading</h1>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+            ad
+            minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+            aliquip ex ea commodo consequat. Lorem ipsum
+            dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+            incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+            veniam,
+            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+            commodo consequat.</p>
+        </div>
+        <div class="w3-third w3-container">
+          <p class="w3-border w3-padding-large w3-padding-32 w3-center">AD</p>
+          <p class="w3-border w3-padding-large w3-padding-64 w3-center">AD</p>
+        </div>
+      </div>
+
+      <!-- Pagination -->
+      <div class="w3-center w3-padding-32">
+        <div class="w3-bar">
+          <a class="w3-button w3-black" href="#">1</a>
+          <a class="w3-button w3-hover-black" href="#">2</a>
+          <a class="w3-button w3-hover-black" href="#">3</a>
+          <a class="w3-button w3-hover-black" href="#">4</a>
+          <a class="w3-button w3-hover-black" href="#">5</a>
+          <a class="w3-button w3-hover-black" href="#">»</a>
+        </div>
+      </div>
+
+      <footer id="myFooter">
+        <div class="w3-container w3-theme-l2 w3-padding-32">
+          <h4>Footer</h4>
+        </div>
+
+        <div class="w3-container w3-theme-l1">
+          <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp"
+              target="_blank">w3.css</a></p>
+        </div>
+      </footer>
+
+      <!-- END MAIN -->
+    </div>
+
+    <script>
+      // Get the Sidebar
+      var mySidebar = document.getElementById("mySidebar");
+
+      // Get the DIV with overlay effect
+      var overlayBg = document.getElementById("myOverlay");
+
+      // Toggle between showing and hiding the sidebar, and add overlay effect
+      function w3_open() {
+        if (mySidebar.style.display === 'block') {
+          mySidebar.style.display = 'none';
+          overlayBg.style.display = "none";
+        } else {
+          mySidebar.style.display = 'block';
+          overlayBg.style.display = "block";
+        }
+      }
+
+      // Close the sidebar with the close button
+      function w3_close() {
+        mySidebar.style.display = "none";
+        overlayBg.style.display = "none";
+      }
+    </script>
+
+</body>
+
+</html>
