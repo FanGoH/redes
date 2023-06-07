@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Pentesting</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-black.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        html,
+        body,
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: "Roboto", sans-serif;
+        }
+
+        .w3-sidebar {
+            z-index: 3;
+            width: 250px;
+            top: 43px;
+            bottom: 0;
+            height: inherit;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <div class="w3-top">
+        <div class="w3-bar w3-theme w3-top w3-left-align w3-large">
+            <a class="w3-bar-item w3-button w3-right w3-hide-large w3-hover-white w3-large w3-theme-l1"
+                href="javascript:void(0)" onclick="w3_open()"><i class="fa fa-bars"></i></a>
+            <a href="#" class="w3-bar-item w3-button w3-theme-l1">Pruebas de Red</a>
+
+        </div>
+    </div>
+    <!-- Sidebar -->
+    <nav class="w3-sidebar w3-bar-block w3-collapse w3-large w3-theme-l5 w3-animate-left" id="mySidebar">
+        <a href="javascript:void(0)" onclick="w3_close()"
+            class="w3-right w3-xlarge w3-padding-large w3-hover-black w3-hide-large" title="Close Menu">
+            <i class="fa fa-remove"></i>
+        </a>
+        <iframe src="/url.html" style="height: 90vh;"></iframe>
+    </nav>
+
+    <!-- Overlay effect when opening sidebar on small screens -->
+    <div class="w3-overlay w3-hide-large" onclick="w3_close()" style="cursor:pointer" title="close side menu"
+        id="myOverlay"></div>
+
+    <!-- Main content: shift it to the right by 250 pixels when the sidebar is visible -->
+    <div class="w3-main" style="margin-left:250px">
+
+        <div class="w3-row w3-padding-64">
+            <div class="w3-twothird w3-container">
+                <h1 class="w3-text-teal">Honeypots</h1>
+                <p>Los honeypots son sistemas diseñados para atraer y recopilar información sobre ataques o posibles
+                    ataques cibernéticos. Estos están configurados para simular un sistema o servicio real, el cual
+                    busca provocar que atacantes intenten interactuar con él</p>
+                <p>De esta manera, un honeypot es un ambiente operativo el cual emula ser un servicio real en una red.
+                </p>
+
+                <p>Con fines prácticos, se crearon 3 honeypots en la vlan 101 y otros 3 en la 201. Estos corren
+                    servicios comunes de un entorno de producción, pero con un nivel de seguridad más bajo en
+                    comparación a los esperados en un sistema configurado correctamente. Es importante notar que es
+                    común encontrar servicios con seguridad subóptima en la vida real, y no son necesariamente
+                    configurados intencionalmente.</p>
+
+                <strong>Honeypots red 10.21.1.0/24</strong>
+                <ul>
+                    <li>10.21.1.101: Web Remote Management Portal (webmin)</li>
+                    <li>10.21.1.102: MySQL y OWASP Ecommerce Website</li>
+                    <li>10.21.1.103: TFTP Server</li>
+                </ul>
+
+                <i>Configuración de webmin</i>
+                <p>La instalación de webmin se realiza agregando el paquete necesaerio a los repositorios de apt, y
+                    posteriormente se instala.</p>
+                <code>
+                    wget http://www.webmin.com/jcameron-key.asc<br>
+                    apt-key add jcameron-key.asc<br>
+                    apt install gnupg2<br>
+                    apt-key add jcameron-key.asc<br>
+                    nano /etc/apt/sources.list.d/webmin.list<br>
+                    apt update<br>
+                    apt install webmin<br>
+                    ip a<br>
+                    nano /etc/webmin/miniserv.conf<br>
+                    service webmin restart<br>
+                </code>
+                <p>Con la instalación ya realizada, se modifican las configuraciones por defecto para hacer el servicio
+                    vulnerable. Se deshabilita ssl, el puerto se pone en 80 en lugar del 10000, se habilita el login a
+                    todos los usuarios, incluyendo root.</p>
+
+                <br>
+                <i>Configuración de MySQL</i>
+                <p>Se realiza una instalación normal de MySQL, por defecto la seguridad no es óptima</p>
+                <code>
+                    wget https://dev.mysql.com/get/mysql-apt-config_0.8.4-1_all.deb<br>
+                    dpkg -i mysql-apt-config_0.8.4-1_all.deb <br>
+                    apt update <br>
+                    apt install mysql-server <br>
+                </code>
+
+                <br>
+                <i>Configuración de OWASP Ecommerce Website</i>
+                <p>Esta es una página proporcionada por owasp para realizar pruebas de seguridad en contra de ella. La
+                    instalación es sencilla y no requiere de mucha configuración</p>
+                <code>
+                    apt update <br>
+                    apt install nodejs npm <br>
+                    npm install -g juice-shop <br>
+                    juice-shop <br>
+                </code>
+                <p>Por defecto el sitio web de pruebas corre en el puerto 3000.</p>
+
+                <br>
+                <i>Configuración de Trivial FTP</i>
+                <p>Este es un servicio de transferencia de archivos muy simple, el cual no requiere mucha configuración.
+                </p>
+                <code>
+                    apt update <br>
+                    apt install tftpd-hpa <br>
+                    TFTP_DIRECTORY="/" <br>
+                    systemctl restart tftpd-hpa <br>
+                </code>
+                <p>El servicio de TFTPD está corriendo bajo el directorio raiz del servidor. Además, se ejecuta con
+                    privilegios root. Es decir, está libre para casi cualquier tipo de ataque.</p>
+
+                <strong>Honeypots red 10.22.1.0/24</strong>
+                <ul>
+                    <li>10.22.1.101 - Telnet Server</li>
+                    <li>10.22.1.102 - MongoDB</li>
+                    <li>10.22.1.103 - SMB</li>
+                </ul>
+
+                <br>
+                <i>Configuración de telnet</i>
+                <p>Debido a las características de telnet, se realiza una instalación por defecto. Esto es suficiente
+                    para tener un estado inseguro del servidor</p>
+                <code>apt install telnetd -y</code>
+
+                <br>
+                <i>Configuración MongoDB</i>
+                <p>Se realiza una instalación por defecto de mongodb</p>
+                <code>
+                    curl -fsSL https://pgp.mongodb.com/server-6.0.asc |    gpg -o /usr/share/keyrings/mongodb-server-6.0.gpg    --dearmor <br>
+                    echo "deb [ signed-by=/usr/share/keyrings/mongodb-server-6.0.gpg] http://repo.mongodb.org/apt/debian bullseye/mongodb-org/6.0 main" | tee /etc/apt/sources.list.d/mongodb-org-6.0.list <br>
+                    apt update <br>
+                    apt install mongodb-org <br>
+                    echo "mongodb-org hold" | dpkg --set-selections <br>
+                    echo "mongodb-org-database hold" | dpkg --set-selections <br>
+                    echo "mongodb-org-server hold" | dpkg --set-selections <br>
+                    echo "mongodb-mongosh hold" | dpkg --set-selections <br>
+                    echo "mongodb-org-mongos hold" | dpkg --set-selections <br>
+                    echo "mongodb-org-tools hold" | dpkg --set-selections <br>
+                    ps --no-headers -o comm 1 <br>
+                    sudo systemctl start mongod <br>
+                    systemctl start mongod <br>
+                    systemctl daemon-reload <br>
+                    systemctl status mongod <br>
+                    systemctl enable mongod <br>
+                </code>
+                <p>Adicionalmente, se modifica la configuración para escuchar en el puerto 27017 desde cualquier
+                    destino. No se configura una contraseña de administración de la base de datos (configuración
+                    insegura).</p>
+
+                <br>
+                <i>Configuración SMB</i>
+                <p>Se crea una configuración insegura de Samba, en la cual no se requieren permisos para acceder a los
+                    archivos compartidos, se tiene acceso completo, y la raiz del servidor está compartida</p>
+                <code>
+                    apt-get update <br>
+                    apt-get install -y samba <br>
+ <br>
+                    cp /etc/samba/smb.conf /etc/samba/smb.conf.bak <br>
+ <br>
+                    cat << EOF > /etc/samba/smb.conf <br>
+                    [global] <br>
+                    workgroup = WORKGROUP <br>
+                    server string = Samba Server %v <br>
+                    netbios name = debian <br>
+                    security = user <br>
+                    map to guest = Bad User <br>
+                    guest account = nobody <br>
+                    dns proxy = no <br>
+ <br>
+                    [public] <br>
+                    path = / <br>
+                    read only = no <br>
+                    guest ok = yes <br>
+                    create mask = 0777 <br>
+                    directory mask = 0777 <br>
+                    force user = nobody <br>
+                    force group = nogroup <br>
+                    guest only = yes <br>
+                    force create mode = 0666 <br>
+                    force directory mode = 0777 <br>
+                    EOF <br>
+ <br>
+                    systemctl restart smbd
+                    chmod -R 777 /
+                </code>
+            </div>
+
+        </div>
+
+
+
+
+
+
+    </div>
+
+    <footer id="myFooter">
+        <div class="w3-container w3-theme-l2 w3-padding-32">
+            <h4>Footer</h4>
+        </div>
+
+        <div class="w3-container w3-theme-l1">
+            <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p>
+        </div>
+    </footer>
+
+    <!-- END MAIN -->
+    </div>
+    </div>
+
+    <script>
+        // Get the Sidebar
+        var mySidebar = document.getElementById("mySidebar");
+
+        // Get the DIV with overlay effect
+        var overlayBg = document.getElementById("myOverlay");
+
+        // Toggle between showing and hiding the sidebar, and add overlay effect
+        function w3_open() {
+            if (mySidebar.style.display === 'block') {
+                mySidebar.style.display = 'none';
+                overlayBg.style.display = "none";
+            } else {
+                mySidebar.style.display = 'block';
+                overlayBg.style.display = "block";
+            }
+        }
+
+        // Close the sidebar with the close button
+        function w3_close() {
+            mySidebar.style.display = "none";
+            overlayBg.style.display = "none";
+        }
+    </script>
+
+</body>
+
+</html>
