@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>W3.CSS Template</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet"
+    href="https://www.w3schools.com/lib/w3-theme-black.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <style>
+    html,
+    body,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      font-family: "Roboto", sans-serif;
+    }
+
+    .w3-sidebar {
+      z-index: 3;
+      width: 250px;
+      top: 43px;
+      bottom: 0;
+      height: inherit;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Navbar -->
+  <div class="w3-top">
+    <div class="w3-bar w3-theme w3-top w3-left-align w3-large">
+      <a class="w3-bar-item w3-button w3-right w3-hide-large w3-hover-white w3-large w3-theme-l1"
+        href="javascript:void(0)" onclick="w3_open()"><i
+          class="fa fa-bars"></i></a>
+      <a href="#" class="w3-bar-item w3-button w3-theme-l1">Logo</a>
+      <a href="#"
+        class="w3-bar-item w3-button w3-hide-small w3-hover-white">About</a>
+      <a href="#"
+        class="w3-bar-item w3-button w3-hide-small w3-hover-white">Values</a>
+      <a href="#"
+        class="w3-bar-item w3-button w3-hide-small w3-hover-white">News</a>
+      <a href="#"
+        class="w3-bar-item w3-button w3-hide-small w3-hover-white">Contact</a>
+      <a href="#"
+        class="w3-bar-item w3-button w3-hide-small w3-hide-medium w3-hover-white">Clients</a>
+      <a href="#"
+        class="w3-bar-item w3-button w3-hide-small w3-hide-medium w3-hover-white">Partners</a>
+    </div>
+  </div>
+
+  <!-- Sidebar -->
+  <nav
+    class="w3-sidebar w3-bar-block w3-collapse w3-large w3-theme-l5 w3-animate-left"
+    id="mySidebar">
+    <a href="javascript:void(0)" onclick="w3_close()"
+      class="w3-right w3-xlarge w3-padding-large w3-hover-black w3-hide-large"
+      title="Close Menu">
+      <i class="fa fa-remove"></i>
+    </a>
+    <iframe src="url.html" style="height: 90vh;"></iframe>
+  </nav>
+
+  <!-- Overlay effect when opening sidebar on small screens -->
+  <div class="w3-overlay w3-hide-large" onclick="w3_close()"
+    style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+
+  <!-- Main content: shift it to the right by 250 pixels when the sidebar is visible -->
+  <div class="w3-main" style="margin-left:250px">
+
+    <div class="w3-row w3-padding-64">
+        <div class="w3-twothird w3-container">
+            <h1 class="w3-text-teal">Man-in-the-Middle en Kali Linux</h1>
+            <p>
+                Para realizar un ataque de Man-in-the-Middle en Kali Linux, debes seguir los siguientes pasos:
+    
+                <ol>
+                    <li>Instalar Kali Linux: Para comenzar, instala Kali Linux en tu sistema.</li>
+                    <li>Iniciar sesión en Kali Linux: Utiliza las cuentas por defecto "kali" y "kali" para iniciar sesión en Kali Linux.</li>
+                    <li>Abrir el menú: Accede al menú principal de Kali Linux.</li>
+                    <li>Localizar la sección 9: Busca la sección 9 en el menú.</li>
+                    <li>Buscar el software "ettercap graphical": Dentro de la sección 9, encuentra y selecciona el software "ettercap graphical".</li>
+                    <li>Ingresar la contraseña de Kali: Al abrir el programa, se te solicitará la contraseña de Kali. Ingresa la contraseña correspondiente.</li>
+                    <li>Seleccionar la interfaz: En la interfaz del programa, busca la opción "Primary Interface" y elige la interfaz "eth0" en este caso.</li>
+                    <li>Iniciar el proceso de escucha: Una vez que hayas configurado la interfaz, haz clic en el botón con la marca de verificación para iniciar el proceso de escucha en la interfaz seleccionada.</li>
+                    <li>Buscar hosts en la LAN: Haz clic en el icono de la lupa para buscar hosts en tu red local.</li>
+                    <li>Buscar dispositivos en la red: Realiza otra búsqueda haciendo clic nuevamente en el icono de la lupa para identificar los dispositivos presentes en la red.</li>
+                    <li>Seleccionar los hosts objetivo: Abre el menú "Hosts" ubicado a la derecha de la lupa y elige los dispositivos que deseas interceptar colocando cada uno de ellos en los botones "Target 1" y "Target 2".</li>
+                    <img src="/img/mitm/kali/1.png">
+                    <img src="/img/mitm/kali/2.png">
+                    <li>Configurar el ataque Man-in-the-Middle: Haz clic en el menú "MITM Menu".</li>
+                    <img src="/img/mitm/kali/3.png">
+                    <li>Ejecutar el envenenamiento ARP: Selecciona la opción "ARP Poisoning" dentro del menú. Esto enviará mensajes ARP a los dos targets seleccionados para que actualicen sus tablas ARP y apunten hacia la dirección de tu máquina Kali, colocándote en el medio de su comunicación.</li>
+                    <img src="/img/mitm/kali/4.png">
+                    <img src="/img/mitm/kali/5.png">
+                    <li>Verificar las tablas ARP: Puedes verificar en tus equipos las tablas ARP para confirmar el envenenamiento. En Windows, puedes usar el comando "arp -a". El cual ahora relaciona la dirección del firewall 10.22.1.10 con  la mac de nuestro kali.</li>
+                    <img src="/img/mitm/kali/6.png">
+                    <li>Por otro lado en la consola de nuestro firewall podemos observar que  el mismo comienza a obtener notificaciones ARP acerca de que la tabla arp se ha actualizado.</li>
+                    <img src="/img/mitm/kali/7.png">
+                    <li>Observar el tráfico con Wireshark: Utiliza el programa Wireshark, que viene preinstalado en Kali, para capturar y analizar el tráfico entre los dispositivos interceptados.</li>
+                    <img src="/img/mitm/kali/8.png">
+                    <li>Seleccionar la interfaz en Wireshark: En Wireshark, selecciona la interfaz "eth0" para capturar el tráfico.</li>
+                    <img src="/img/mitm/kali/9.png">
+                    <li>Aplicar filtros: Aplica un filtro para observar las conexiones de la IP específica que deseas analizar, por ejemplo, la IP de la máquina con Windows 7.</li>
+                    <img src="/img/mitm/kali/11.png">
+                    <li>Analizar las conexiones capturadas: Ahora podrás ver claramente las conexiones y su contenido en Wireshark. Por ejemplo, podrías capturar credenciales de inicio de sesión si la conexión no está encriptada.</li>
+                    <img src="/img/mitm/kali/12.png">
+                </ol>
+            </p>
+        </div>
+
+
+
+
+
+
+        </div>
+
+      <footer id="myFooter">
+        <div class="w3-container w3-theme-l2 w3-padding-32">
+          <h4>Footer</h4>
+        </div>
+
+        <div class="w3-container w3-theme-l1">
+          <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp"
+              target="_blank">w3.css</a></p>
+        </div>
+      </footer>
+
+      <!-- END MAIN -->
+    </div>
+  </div>
+
+  <script>
+    // Get the Sidebar
+    var mySidebar = document.getElementById("mySidebar");
+
+    // Get the DIV with overlay effect
+    var overlayBg = document.getElementById("myOverlay");
+
+    // Toggle between showing and hiding the sidebar, and add overlay effect
+    function w3_open() {
+      if (mySidebar.style.display === 'block') {
+        mySidebar.style.display = 'none';
+        overlayBg.style.display = "none";
+      } else {
+        mySidebar.style.display = 'block';
+        overlayBg.style.display = "block";
+      }
+    }
+
+    // Close the sidebar with the close button
+    function w3_close() {
+      mySidebar.style.display = "none";
+      overlayBg.style.display = "none";
+    }
+  </script>
+
+</body>
+
+</html>
