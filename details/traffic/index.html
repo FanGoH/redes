@@ -2,122 +2,247 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pruebas de tráfico</title>
+  <title>W3.CSS Template</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet"
+    href="https://www.w3schools.com/lib/w3-theme-black.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <style>
+    html,
+    body,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      font-family: "Roboto", sans-serif;
+    }
+
+    .w3-sidebar {
+      z-index: 3;
+      width: 250px;
+      top: 43px;
+      bottom: 0;
+      height: inherit;
+    }
+  </style>
 </head>
 
 <body>
-    <div class="content">
-        <h1>Generación de Tráfico</h1>
-        <p>La generación de tráfico de red, o pruebas de rendimiento/carga de red, es un proceso de evaluación para medir y analizar el desempeño de una red de computadoras. El objetivo principal de estas pruebas es identificar cuellos de botella, puntos débiles y limitaciones de la infraestructura. Adicionalmente, estas pruebas permiten identificar si la red tiene la capacidad de manejar cargas de trabajo con distintos requisitos de rendimiento, como lo puede ser el tráfico de voz, videoconferencias y acceso a servicios http. </p>
-        <p>Durante este tipo de pruebas se genera tráfico simulado o real que busca evaluar el ancho de banda, latencia, pérdida de paquetes y otras características de rendimiento de la red. Dentro de la generación de tráfico de red se pueden definir distintos escenarios que incluyen cargas de trabajo típicas o flujos de tráfico con el objetivo de imitar condiciones de uso intensivo de la red.</p>
-        <h2>Implementación</h2>
-        <p>Con el objetivo de evaluar la capacidad de la red se realizan pruebas de generación de tráfico.</p>
-        <p>Programas a utilizar:</p>
-        <ul>
-            <li>hping</li>
-            <li>Cola Soft Packet Builder</li>
-        </ul>
-        <h3>Generación de tráfico con Colasoft Packet Builder</h3>
-        <p><strong>Instalación</strong></p>
-        <p>Se descarga la versión adecuada de ColaSoft Packet Builder de la página de descargas <a href="https://www.colasoft.com/packet_builder/">https://www.colasoft.com/packet_builder/</a>. Se realiza la instalación de forma estándar, no es necesario realizar ningún cambio ni configuración especial durante este proceso.</p>
-        <p><strong>Generación de Tráfico</strong></p>
-        <p>Se abre la aplicación instalada. La interfaz es relativamente intuitiva y sencilla. <i>La aplicación debe de ser ejecutada con permisos de administrador</i></p>
-        <img src="/img/traffic/1-colasoft-main-window.png" alt="Colasoft initial page" style="max-width: 70vw;">
-        <br>
-        <p>Con la aplicación abierta, se crea un nuevo paquete el cual será utilizado para realizar la prueba de generación de tráfico</p>
-        <img src="/img/traffic/2-colasoft-new-packet.png" alt="Colasoft add packet window" style="max-width: 70vw;">
-        <p>En esta ventana se elige la plantilla del paquete (IP, TCP, UDP, ARP), delta time hace referencia al tiempo entre un paquete y el siguiente en su secuencia.</p>
-        <p>Para esta prueba, se utiliza la plantilla IP. Luego de dar click en Ok, el paquete generado se agrega a la lista que aparece en la mitad derecha de la pantalla, y en la parte izquierda se muestra un editor de parametros del paquete</p>
-        <img src="/img/traffic/3-colasoft-added-packet.png" alt="Colasoft add packet window" style="max-width: 70vw;">
-        <br>
-        <p>Con el fin de realizar esta prueba, vamos a generar tráfico en la red izquierda utilizando la VLAN 101. La fuente del tráfico es el host 10.21.1.196, y el destino será 10.21.1.197, las conexiones se realizan al puerto destino 22. También se debe de especificar la dirección MAC de destino (08:00:27:8B:CB:1F)</p>
-        <p>Desde el editor de ColaSoft Packet Builder se establecen los parámetros de ejecución</p>
-        <img src="/img/traffic/4-colasoft-port22-modified-packet.png" alt="Colasoft add packet window" style="max-width: 70vw;">
-        <br>
-        <p>Con la prueba configurada, ahora es posible ejecutarla y observar el comportamiento de la red. Para esto se da click al botón de Send. En esta ventana se definen los parámetros para el envío de paquetes. Para hacer muy claro el funcionamiento de la herramienta, se selecciona Burst Mode, 0 loops (ilimitados) y tiempo de espera entre ciclos en 0</p>
-        <img src="/img/traffic/5-colasoft-traffic-generation-start.png" alt="Colasoft add packet window" style="max-width: 70vw;">
-        <br>
-        <p>Con los parámetros de configuración establecidos, ahora se puede iniciar la prueba.</p>
-        <img src="/img/traffic/6-colasoft-running.png" alt="Colasoft add packet window" style="max-width: 70vw;">
-        <br>
-        <p>Ahora que la prueba está corriendo, es posible validar su ejecución en WireShark.</p>
-        <img src="/img/traffic/7-colasoft-packet-capture.png" alt="Colasoft add packet window" style="max-width: 70vw;">
-        <br>
-        <p>Si vamos al cliente de destino, es posible identificar un aumento en el uso de recursos. La conexión del cliente se puede observar en iftop, y el uso de recursos aumentado en htop</p>
-        <img src="/img/traffic/8-colasoft-destination-cpu-usage.png" alt="Colasoft add packet window" style="max-width: 70vw;">
-        <p>Si detenemos la ejecución de la prueba en ColaSoft Packet Builder, podemos observar la diferencia en el uso. Donde el uso de recursos disminuye, y el tráfico entre clientes baja. Es necesario observar que la conexión en iftop no desaparece al instante, ya que es necesario que pase el tiempo de timeout de la conexión.</p>
-        <img src="/img/traffic/9-colasoft-destination-usage-off.png" alt="Colasoft add packet window" style="max-width: 70vw;">
-        <h3>Generación de tráfico con hping</h3>
-        <p><strong>Instalación</strong></p>
-        <p>Instalar hping3 es un proceso sencillo, únicamente es necesario instalar el paquete de debian con: <i>apt install hping3</i></p>
-        <p>Algunos de los argumentos de hping3 son los siguientes:</p>
-        <i>Opciones:</i>
-        <ul>
-            <li><code>-c –count</code> Contador de paquetes</li>
-            <li><code>-i –interval</code> Tiempo de espera (uX para X microsegundos)</li>
-            <li><code>--fast</code> Para 10 paquetes por segundo</li>
-            <li><code>--faster</code> Para 100 paquetes por segundo</li>
-            <li><code>--flood</code> Envía paquetes lo más rápido posible, sin mostrar respuestas</li>
-            <li><code>-n –numeric</code> Salida con números</li>
-            <li><code>-q –quiet</code> No muestra resultados en pantalla</li>
-        </ul>
-        <i>Modo:</i>
-        <ul>
-            <li><code>-0 –rawip</code> Modo Raw IP</li>
-            <li><code>-1 –icmp</code> Modo ICMP</li>
-            <li><code>-2 –udp</code> Modo UDP</li>
-            <li><code>-8 –scan</code> Modo SCAN</li>
-            <li><code>-9 –listen</code> Modo Escuchar</li>
-        </ul>
-        <i>IP:</i>
-        <ul>
-            <li><code>-a –spoof</code> Le hace spoof a la dirección IP de origen</li>
-            <li><code>--rand-dest</code> Dirección IP de destino aleatorio</li>
-            <li><code>--rand-source</code> Dirección IP de origen aleatorio</li>
-            <li><code>-t –ttl</code> ttl</li>
-            <li><code>-N –id</code> ID</li>
-            <li><code>-r –rel</code> Relativiza el campo del ID (Para estimar el tráfico del host)</li>
-            <li><code>-f –frag</code> Divide el paquete en más fragmentos (Puede pasar por ACL’s débiles)</li>
-        </ul>
-        <i>ICMP:</i>
-        <ul>
-            <li><code>-C –icmptype</code> Tipo de ICMP</li>
-            <li><code>-K –icmpcode</code> Código de ICMP</li>
-            <li><code>--force-icmp</code> Envía todos los tipos de ICMP</li>
-            <li><code>--icmp-gw</code> Establece la dirección del gateway para la redirección de ICMP</li>
-        </ul>
-        <i>UDP/TCP:</i>
-        <ul>
-            <li><code>-s –baseport</code> Puerto de origen base</li>
-            <li><code>-p –destport</code> Puerto de destino</li>
-            <li><code>-k –keep</code> Mantener el puerto de origen</li>
-            <li><code>-O –tcpoff</code> Establecer un offset para los datos de TCP falsos</li>
-            <li><code>--Q seqnum</code> Muestra solamente la secuencia de números de TCP</li>
-            <li><code>-b –badcksum</code> Envía paquetes con</li>
-        </ul>
 
-        <br>
-        <h3>Generación de tráfico</h3>
-        <p>Debido a que hping es una utilería de línea de comandos, el proceso de iniciar una prueba de tráfico es más rápido y <i>sencillo</i>. En este caso, la prueba será realizada sobre el puerto 22 TCP desde el origen 10.21.1.197 (debian) hacia 10.21.1.101 (honeypot). De esta manera, el comando a utilizar es el siguiente</p>
-        <code>hping3 10.21.1.101 -p 22 -S --flood</code>
-        <br>
-        <p>Donde el comando significa: generar paquetes de red con destino 10.21.1.101 sobre el puerto 22. Únicamente generar TCP SYN, y enviar todos los paquetes que sean posibles sin esperar respuesta. Al ejectuar el comando se obtiene la siguiente salida</p>
-        <img src="/img/traffic/10-hping-running.png" alt="Colasoft add packet window" style="max-width: 70vw;">
-        <br>
-        <p>Para validar que el tráfico está siendo generado, podemos acceder al cliente destino y validar la información de htop</p>
-        <img src="/img/traffic/11-hping-iftop-running.png" alt="Colasoft add packet window" style="max-width: 70vw;">
-        <br>
-        <p>A través de iftop, también es posible observar el tráfico generado</p>
-        <img src="/img/traffic/12-hping-htop-running.png" alt="Colasoft add packet window" style="max-width: 70vw;">
-        <br>
-        <p>Finalmente, únicamente queda comparar el uso de recursos cuando la prueba no está corriendo en contra del destino</p>
-        <img src="/img/traffic/13-hping-htop-off.png" alt="Colasoft add packet window" style="max-width: 70vw;">
-        <br>
-        <p>Se observa que cuando el tráfico no está siendo generado en contra del cliente, este no utiliza tantos recursos de CPU.</p>
+  <!-- Navbar -->
+  <div class="w3-top">
+    <div class="w3-bar w3-theme w3-top w3-left-align w3-large">
+      <a class="w3-bar-item w3-button w3-right w3-hide-large w3-hover-white w3-large w3-theme-l1"
+        href="javascript:void(0)" onclick="w3_open()"><i
+          class="fa fa-bars"></i></a>
+      <a href="#" class="w3-bar-item w3-button w3-theme-l1">Logo</a>
+      <a href="#"
+        class="w3-bar-item w3-button w3-hide-small w3-hover-white">About</a>
+      <a href="#"
+        class="w3-bar-item w3-button w3-hide-small w3-hover-white">Values</a>
+      <a href="#"
+        class="w3-bar-item w3-button w3-hide-small w3-hover-white">News</a>
+      <a href="#"
+        class="w3-bar-item w3-button w3-hide-small w3-hover-white">Contact</a>
+      <a href="#"
+        class="w3-bar-item w3-button w3-hide-small w3-hide-medium w3-hover-white">Clients</a>
+      <a href="#"
+        class="w3-bar-item w3-button w3-hide-small w3-hide-medium w3-hover-white">Partners</a>
     </div>
+  </div>
+
+  <!-- Sidebar -->
+  <nav
+    class="w3-sidebar w3-bar-block w3-collapse w3-large w3-theme-l5 w3-animate-left"
+    id="mySidebar">
+    <a href="javascript:void(0)" onclick="w3_close()"
+      class="w3-right w3-xlarge w3-padding-large w3-hover-black w3-hide-large"
+      title="Close Menu">
+      <i class="fa fa-remove"></i>
+    </a>
+    <iframe src="/url.html" style="height: 90vh;"></iframe>
+  </nav>
+
+  <!-- Overlay effect when opening sidebar on small screens -->
+  <div class="w3-overlay w3-hide-large" onclick="w3_close()"
+    style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+
+  <!-- Main content: shift it to the right by 250 pixels when the sidebar is visible -->
+  <div class="w3-main" style="margin-left:250px">
+
+    <div class="w3-row w3-padding-64">
+        <div class="w3-twothird w3-container">
+            <h1 class="w3-text-teal">Generación de Trafico</h1>
+          
+            <p>La generación de tráfico de red, o pruebas de rendimiento/carga de red, es un proceso de evaluación para medir y analizar el desempeño de una red de computadoras. El objetivo principal de estas pruebas es identificar cuellos de botella, puntos débiles y limitaciones de la infraestructura. Adicionalmente, estas pruebas permiten identificar si la red tiene la capacidad de manejar cargas de trabajo con distintos requisitos de rendimiento, como lo puede ser el tráfico de voz, videoconferencias y acceso a servicios http. </p>
+            <p>Durante este tipo de pruebas se genera tráfico simulado o real que busca evaluar el ancho de banda, latencia, pérdida de paquetes y otras características de rendimiento de la red. Dentro de la generación de tráfico de red se pueden definir distintos escenarios que incluyen cargas de trabajo típicas o flujos de tráfico con el objetivo de imitar condiciones de uso intensivo de la red.</p>
+            <h2>Implementación</h2>
+            <p>Con el objetivo de evaluar la capacidad de la red se realizan pruebas de generación de tráfico.</p>
+            <p>Programas a utilizar:</p>
+            <ul>
+                <li>hping</li>
+                <li>Cola Soft Packet Builder</li>
+            </ul>
+            <h3>Generación de tráfico con Colasoft Packet Builder</h3>
+            <p><strong>Instalación</strong></p>
+            <p>Se descarga la versión adecuada de ColaSoft Packet Builder de la página de descargas <a href="https://www.colasoft.com/packet_builder/">https://www.colasoft.com/packet_builder/</a>. Se realiza la instalación de forma estándar, no es necesario realizar ningún cambio ni configuración especial durante este proceso.</p>
+            <p><strong>Generación de Tráfico</strong></p>
+            <p>Se abre la aplicación instalada. La interfaz es relativamente intuitiva y sencilla. <i>La aplicación debe de ser ejecutada con permisos de administrador</i></p>
+            <img src="/img/traffic/1-colasoft-main-window.png" alt="Colasoft initial page" style="max-width: 70vw;">
+            <br>
+            <p>Con la aplicación abierta, se crea un nuevo paquete el cual será utilizado para realizar la prueba de generación de tráfico</p>
+            <img src="/img/traffic/2-colasoft-new-packet.png" alt="Colasoft add packet window" style="max-width: 70vw;">
+            <p>En esta ventana se elige la plantilla del paquete (IP, TCP, UDP, ARP), delta time hace referencia al tiempo entre un paquete y el siguiente en su secuencia.</p>
+            <p>Para esta prueba, se utiliza la plantilla IP. Luego de dar click en Ok, el paquete generado se agrega a la lista que aparece en la mitad derecha de la pantalla, y en la parte izquierda se muestra un editor de parametros del paquete</p>
+            <img src="/img/traffic/3-colasoft-added-packet.png" alt="Colasoft add packet window" style="max-width: 70vw;">
+            <br>
+            <p>Con el fin de realizar esta prueba, vamos a generar tráfico en la red izquierda utilizando la VLAN 101. La fuente del tráfico es el host 10.21.1.196, y el destino será 10.21.1.197, las conexiones se realizan al puerto destino 22. También se debe de especificar la dirección MAC de destino (08:00:27:8B:CB:1F)</p>
+            <p>Desde el editor de ColaSoft Packet Builder se establecen los parámetros de ejecución</p>
+            <img src="/img/traffic/4-colasoft-port22-modified-packet.png" alt="Colasoft add packet window" style="max-width: 70vw;">
+            <br>
+            <p>Con la prueba configurada, ahora es posible ejecutarla y observar el comportamiento de la red. Para esto se da click al botón de Send. En esta ventana se definen los parámetros para el envío de paquetes. Para hacer muy claro el funcionamiento de la herramienta, se selecciona Burst Mode, 0 loops (ilimitados) y tiempo de espera entre ciclos en 0</p>
+            <img src="/img/traffic/5-colasoft-traffic-generation-start.png" alt="Colasoft add packet window" style="max-width: 70vw;">
+            <br>
+            <p>Con los parámetros de configuración establecidos, ahora se puede iniciar la prueba.</p>
+            <img src="/img/traffic/6-colasoft-running.png" alt="Colasoft add packet window" style="max-width: 70vw;">
+            <br>
+            <p>Ahora que la prueba está corriendo, es posible validar su ejecución en WireShark.</p>
+            <img src="/img/traffic/7-colasoft-packet-capture.png" alt="Colasoft add packet window" style="max-width: 70vw;">
+            <br>
+            <p>Si vamos al cliente de destino, es posible identificar un aumento en el uso de recursos. La conexión del cliente se puede observar en iftop, y el uso de recursos aumentado en htop</p>
+            <img src="/img/traffic/8-colasoft-destination-cpu-usage.png" alt="Colasoft add packet window" style="max-width: 70vw;">
+            <p>Si detenemos la ejecución de la prueba en ColaSoft Packet Builder, podemos observar la diferencia en el uso. Donde el uso de recursos disminuye, y el tráfico entre clientes baja. Es necesario observar que la conexión en iftop no desaparece al instante, ya que es necesario que pase el tiempo de timeout de la conexión.</p>
+            <img src="/img/traffic/9-colasoft-destination-usage-off.png" alt="Colasoft add packet window" style="max-width: 70vw;">
+            <h3>Generación de tráfico con hping</h3>
+            <p><strong>Instalación</strong></p>
+            <p>Instalar hping3 es un proceso sencillo, únicamente es necesario instalar el paquete de debian con: <i>apt install hping3</i></p>
+            <p>Algunos de los argumentos de hping3 son los siguientes:</p>
+            <i>Opciones:</i>
+            <ul>
+                <li><code>-c –count</code> Contador de paquetes</li>
+                <li><code>-i –interval</code> Tiempo de espera (uX para X microsegundos)</li>
+                <li><code>--fast</code> Para 10 paquetes por segundo</li>
+                <li><code>--faster</code> Para 100 paquetes por segundo</li>
+                <li><code>--flood</code> Envía paquetes lo más rápido posible, sin mostrar respuestas</li>
+                <li><code>-n –numeric</code> Salida con números</li>
+                <li><code>-q –quiet</code> No muestra resultados en pantalla</li>
+            </ul>
+            <i>Modo:</i>
+            <ul>
+                <li><code>-0 –rawip</code> Modo Raw IP</li>
+                <li><code>-1 –icmp</code> Modo ICMP</li>
+                <li><code>-2 –udp</code> Modo UDP</li>
+                <li><code>-8 –scan</code> Modo SCAN</li>
+                <li><code>-9 –listen</code> Modo Escuchar</li>
+            </ul>
+            <i>IP:</i>
+            <ul>
+                <li><code>-a –spoof</code> Le hace spoof a la dirección IP de origen</li>
+                <li><code>--rand-dest</code> Dirección IP de destino aleatorio</li>
+                <li><code>--rand-source</code> Dirección IP de origen aleatorio</li>
+                <li><code>-t –ttl</code> ttl</li>
+                <li><code>-N –id</code> ID</li>
+                <li><code>-r –rel</code> Relativiza el campo del ID (Para estimar el tráfico del host)</li>
+                <li><code>-f –frag</code> Divide el paquete en más fragmentos (Puede pasar por ACL’s débiles)</li>
+            </ul>
+            <i>ICMP:</i>
+            <ul>
+                <li><code>-C –icmptype</code> Tipo de ICMP</li>
+                <li><code>-K –icmpcode</code> Código de ICMP</li>
+                <li><code>--force-icmp</code> Envía todos los tipos de ICMP</li>
+                <li><code>--icmp-gw</code> Establece la dirección del gateway para la redirección de ICMP</li>
+            </ul>
+            <i>UDP/TCP:</i>
+            <ul>
+                <li><code>-s –baseport</code> Puerto de origen base</li>
+                <li><code>-p –destport</code> Puerto de destino</li>
+                <li><code>-k –keep</code> Mantener el puerto de origen</li>
+                <li><code>-O –tcpoff</code> Establecer un offset para los datos de TCP falsos</li>
+                <li><code>--Q seqnum</code> Muestra solamente la secuencia de números de TCP</li>
+                <li><code>-b –badcksum</code> Envía paquetes con</li>
+            </ul>
+    
+            <br>
+            <h3>Generación de tráfico</h3>
+            <p>Debido a que hping es una utilería de línea de comandos, el proceso de iniciar una prueba de tráfico es más rápido y <i>sencillo</i>. En este caso, la prueba será realizada sobre el puerto 22 TCP desde el origen 10.21.1.197 (debian) hacia 10.21.1.101 (honeypot). De esta manera, el comando a utilizar es el siguiente</p>
+            <code>hping3 10.21.1.101 -p 22 -S --flood</code>
+            <br>
+            <p>Donde el comando significa: generar paquetes de red con destino 10.21.1.101 sobre el puerto 22. Únicamente generar TCP SYN, y enviar todos los paquetes que sean posibles sin esperar respuesta. Al ejecutar el comando se obtiene la siguiente salida</p>
+            <img src="/img/traffic/10-hping-running.png" alt="Colasoft add packet window" style="max-width: 70vw;">
+            <br>
+            <p>Para validar que el tráfico está siendo generado, podemos acceder al cliente destino y validar la información de htop</p>
+            <img src="/img/traffic/11-hping-iftop-running.png" alt="Colasoft add packet window" style="max-width: 70vw;">
+            <br>
+            <p>A través de iftop, también es posible observar el tráfico generado</p>
+            <img src="/img/traffic/12-hping-htop-running.png" alt="Colasoft add packet window" style="max-width: 70vw;">
+            <br>
+            <p>Finalmente, únicamente queda comparar el uso de recursos cuando la prueba no está corriendo en contra del destino</p>
+            <img src="/img/traffic/13-hping-htop-off.png" alt="Colasoft add packet window" style="max-width: 70vw;">
+            <br>
+            <p>Se observa que cuando el tráfico no está siendo generado en contra del cliente, este no utiliza tantos recursos de CPU.</p>
+        </div>
+        <div class="w3-third w3-container">
+            <p class="w3-border w3-padding-large w3-padding-32 w3-center">AD</p>
+            <p class="w3-border w3-padding-large w3-padding-64 w3-center">AD</p>
+        </div>
+    </div>
+
+
+
+
+
+        
+        </div>
+
+      <footer id="myFooter">
+        <div class="w3-container w3-theme-l2 w3-padding-32">
+          <h4>Footer</h4>
+        </div>
+
+        <div class="w3-container w3-theme-l1">
+          <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp"
+              target="_blank">w3.css</a></p>
+        </div>
+      </footer>
+
+      <!-- END MAIN -->
+    </div>
+  </div>
+
+  <script>
+    // Get the Sidebar
+    var mySidebar = document.getElementById("mySidebar");
+
+    // Get the DIV with overlay effect
+    var overlayBg = document.getElementById("myOverlay");
+
+    // Toggle between showing and hiding the sidebar, and add overlay effect
+    function w3_open() {
+      if (mySidebar.style.display === 'block') {
+        mySidebar.style.display = 'none';
+        overlayBg.style.display = "none";
+      } else {
+        mySidebar.style.display = 'block';
+        overlayBg.style.display = "block";
+      }
+    }
+
+    // Close the sidebar with the close button
+    function w3_close() {
+      mySidebar.style.display = "none";
+      overlayBg.style.display = "none";
+    }
+  </script>
+
 </body>
 
 </html>
+
+
+

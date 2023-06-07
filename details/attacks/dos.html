@@ -56,18 +56,7 @@
   <a href="javascript:void(0)" onclick="w3_close()" class="w3-right w3-xlarge w3-padding-large w3-hover-black w3-hide-large" title="Close Menu">
     <i class="fa fa-remove"></i>
   </a>
-  <h4 class="w3-bar-item"><b>Menu</b></h4>
-  <a class="w3-bar-item w3-button w3-hover-black" href="index.html">Home</a>
-  <a class="w3-bar-item w3-button w3-hover-black" href="details/index.html">Details</a>
-  <a class="w3-bar-item w3-button w3-hover-black w3-padding-left-small" href="details/debian.html">- Debian</a>
-  <a class="w3-bar-item w3-button w3-hover-black w3-padding-left-small" href="details/debiangui.html">- Debian GUI</a>
-  <a class="w3-bar-item w3-button w3-hover-black w3-padding-left-small" href="details/kaligui.html">- Kali GUI</a>
-  <a class="w3-bar-item w3-button w3-hover-black w3-padding-left-small" href="details/windows7.html">- Windows 7</a>
-  <a class="w3-bar-item w3-button w3-hover-black" href="details/attacks/ddos.html">- Attacks</a>
-  <a class="w3-bar-item w3-button w3-hover-black w3-padding-left-small" href="details/attacks/ddos.html">-- DDoS</a>
-  <a class="w3-bar-item w3-button w3-hover-black w3-padding-left-small" href="details/attacks/dns.html">-- DNS</a>
-  <a class="w3-bar-item w3-button w3-hover-black w3-padding-left-small" href="details/attacks/dos.html">-- DoS</a>
-  <a class="w3-bar-item w3-button w3-hover-black w3-padding-left-small" href="details/attacks/mitmdebian.html">-- MITM Debian</a>
+  <iframe src="/url.html" style="height: 90vh;"></iframe>
 </nav>
 
   <!-- Overlay effect when opening sidebar on small screens -->
@@ -91,8 +80,8 @@
         resultado obtenido con <i>--faster</i> fue el siguiente, en el cual se puede observar
         que el uso de cpu llegó a incrementar hasta un 28%:</p>
 
-        <!-- Imagen 1: Faster DoS Linux -->
-        <!-- Imagen 2: Faster DoS Cpu -->
+        <img src="/img/Faster DoS Linux.JPG">
+        <img src="/img/Faster DoS Cpu.JPG">
 
         <p class="w3-text-teal">Para el segundo caso, en el cual se utilizó el argumento
         <i>--flood</i>, se tuvieron resultados mucho más notorios, puesto a que el uso del cpu
@@ -100,24 +89,20 @@
         realizó el comando en tan solo unos pocos segundos:
         </p>
 
-        <!-- Imagen 3: Flood DoS Linux -->
-        <!-- Imagen 4: Flood DoS Cpu -->
+        <img src="/img/Flood DoS Linux.JPG">
+        <img src="/img/Flood DoS Cpu.JPG">
+
+        <p class="w3-text-teal">Como resultado se obtuvo que, a pesar de que los ataques de DoS
+        lograron aumentar el uso de cpu del firewall, estos no fueron suficientes como para detener
+        por completo el servicio. Por lo tanto, si se deseara saturar por completo la red, sería
+        necesario el uso de otros dispositivos, o dicho de otra manera, realizar un ataque DDoS.
+        </p>
       </div>
     </div>
 
 
 
-    <!-- Pagination -->
-    <div class="w3-center w3-padding-32">
-      <div class="w3-bar">
-        <a class="w3-button w3-black" href="#">1</a>
-        <a class="w3-button w3-hover-black" href="#">2</a>
-        <a class="w3-button w3-hover-black" href="#">3</a>
-        <a class="w3-button w3-hover-black" href="#">4</a>
-        <a class="w3-button w3-hover-black" href="#">5</a>
-        <a class="w3-button w3-hover-black" href="#">»</a>
-      </div>
-    </div>
+
 
     <footer id="myFooter">
       <div class="w3-container w3-theme-l2 w3-padding-32">

@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Pentesting</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet"
+    href="https://www.w3schools.com/lib/w3-theme-black.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <style>
+    html,
+    body,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      font-family: "Roboto", sans-serif;
+    }
+
+    .w3-sidebar {
+      z-index: 3;
+      width: 250px;
+      top: 43px;
+      bottom: 0;
+      height: inherit;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Navbar -->
+  <div class="w3-top">
+    <div class="w3-bar w3-theme w3-top w3-left-align w3-large">
+      <a class="w3-bar-item w3-button w3-right w3-hide-large w3-hover-white w3-large w3-theme-l1"
+        href="javascript:void(0)" onclick="w3_open()"><i
+          class="fa fa-bars"></i></a>
+      <a href="#" class="w3-bar-item w3-button w3-theme-l1">Logo</a>
+      <a href="#"
+        class="w3-bar-item w3-button w3-hide-small w3-hover-white">About</a>
+      <a href="#"
+        class="w3-bar-item w3-button w3-hide-small w3-hover-white">Values</a>
+      <a href="#"
+        class="w3-bar-item w3-button w3-hide-small w3-hover-white">News</a>
+      <a href="#"
+        class="w3-bar-item w3-button w3-hide-small w3-hover-white">Contact</a>
+      <a href="#"
+        class="w3-bar-item w3-button w3-hide-small w3-hide-medium w3-hover-white">Clients</a>
+      <a href="#"
+        class="w3-bar-item w3-button w3-hide-small w3-hide-medium w3-hover-white">Partners</a>
+    </div>
+  </div>
+
+  <!-- Sidebar -->
+  <nav
+    class="w3-sidebar w3-bar-block w3-collapse w3-large w3-theme-l5 w3-animate-left"
+    id="mySidebar">
+    <a href="javascript:void(0)" onclick="w3_close()"
+      class="w3-right w3-xlarge w3-padding-large w3-hover-black w3-hide-large"
+      title="Close Menu">
+      <i class="fa fa-remove"></i>
+    </a>
+    <iframe src="/url.html" style="height: 90vh;"></iframe>
+  </nav>
+
+  <!-- Overlay effect when opening sidebar on small screens -->
+  <div class="w3-overlay w3-hide-large" onclick="w3_close()"
+    style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+
+  <!-- Main content: shift it to the right by 250 pixels when the sidebar is visible -->
+  <div class="w3-main" style="margin-left:250px">
+
+    <div class="w3-row w3-padding-64">
+      <div class="w3-twothird w3-container">
+        <h1 class="w3-text-teal">Pentesting</h1>
+        <p>
+          Para probar un ataque sobre un sitio web (así como algunas
+          vulnerabilidades comunes), se recurre a el proyecto de <i>Juice
+            Shop</i> de la OWASP. Esta es una aplicación diseñada de manera de
+          ser insegura, y tiene como objetivo iniciar en el proceso de reconocer
+          vulnerabilidades, en el presente documento se exploran algunas, con
+          apoyo de Burp
+        </p>
+
+
+        <h2>Instalando Juice Shop</h2>
+        <ul>
+          <li>Instalar nodejs (Juice Shop se encuentra disponible para la
+            version 14 o posterior)</li>
+          <li>Descargar los paquetes de Github <a
+              href="https://github.com/juice-shop/juice-shop/releases/tag/v15.0.0">https://github.com/juice-shop/juice-shop/releases/tag/v15.0.0</a>,
+            en este caso, la versión 15 para node 20.</li>
+          <li>Descomprimir</li>
+          <li>npm install y npm start</li>
+        </ul>
+
+        <h2>Utilizando Burp Proxy</h2>
+        <p>
+          Parte de éstos ataques involucran la utilizacion de Burp Proxy para
+          generar peticiones con informacion personalizada. Burp como una suite
+          importante para manipular paquetes.
+        </p>
+        <p>
+          Una de las funcionalidades con las que cuenta es un navegador basado
+          en Chromium que intercepta las peticiones, y permite modificarlas
+          antes de enviarlas, esta se encuentrra dentro de Proxy > Intercept >
+          intercept is off, y ya está listo para interceptar requests.
+        </p>
+
+        <img src="/img/pen/1.png" alt="">
+
+        <h2>Haciendo inyección SQL</h2>
+        <ol>
+          <li>Abrimos la página de login, haciendo forwarding <img
+              src="/img/pen/2-login.png" alt=""></li>
+
+          <li>Rellenamos los datos con información dummy, para poder revisar
+            como se mandan las solicitudoes <img src="/img/pen/3.png" alt=""> y
+            damos enviar</li>
+          <li>Presionamos <i>Forward</i> hasta que la petición se encuentre en
+            el interceptor</li>
+          <img src="/img/pen/4-intercept.png" alt="">
+          <li>Cambiamos el email por una sentencia SQL, que hará que se ignore
+            la validación de usuario y contraseña, que sucede cuando la entrada
+            no se encuetnra validada como debería <img
+              src="/img/pen/5-inyeccion.png" alt=""></li>
+          <img src="/img/pen/6-admintoken.png" alt="">
+          <img src="/img/pen/7-successlogin.png" alt="">
+          <li>Esto puede hacerse con cualquier cuenta, por ejemplo, entremos con
+            la cuenta de "bender@juice-sh.op", modificando el email para ser
+            bender@juice-sh.op' --, que es suficiente para generar el token</li>
+          <img src="/img/pen/8-blender.png" alt="">
+
+        </ol>
+
+        <h2>Haciendo fuerza bruta sobre las contraseñas</h2>
+        <p>
+          Si bien es cierto que podemos utilizar mas técnicas de inyección,
+          vamos a experimentar con la lista de contraseñas conocidas, una de
+          esas listas es best1050 de Seclists, que puede buscarse en internet y
+          descargar (por ejemplo <a
+            href="https://raw.githubusercontent.com/danielmiessler/SecLists/master/Passwords/Common-Credentials/best1050.txt">aqui</a>),
+          o con el paquete seclists.
+        </p>
+        <p>
+          Para hacer el ataque utilizando Burp:
+        </p>
+        <ol>
+          <li>Buscamos la solicitud de login y la mandamos a intruder <img
+              src="/img/pen/9-intruder.png" alt=""></li>
+          <li>Modificamos el cuerpo de la petición para aceptar diferentes
+            parametros de las contraseñas</li>
+          <img src="/img/pen/10-payload.png" alt="">
+          <li>Cargamos la lista de best1050.txt seleccionando <i>load</i></li>
+          <img src="/img/pen/11-selectlist.png" alt="">
+          <li>Iniciamos el ataque, notar que la versión community tiene un
+            tiempo de espera entre peticiones</li>
+          <li>Buscamos la contraseña que generó un 200 como respuesta http, que
+            es admin123 <img src="/img/pen/12-adminsuccess.png" alt=""></li>
+        </ol>
+
+        <h2>Vulnerabilidades con FTP</h2>
+        <p>
+          El servidor cuenta con un ftp que permite la entrada de invitados, por
+          lo que al visitar la ruta /ftp, encontramos <img
+            src="/img/pen/13-ftp.png" alt="">
+        </p>
+        <p>
+          Ahora tratemos de descargar <code>package.json.bak</code>, (que puede
+          contener informacion importante), y obtenemos la siguiente respuesta
+          <img src="/img/pen/14-nobak.png" alt="">
+        </p>
+        <p>
+          Pero es posible rodear esta limitante con añadir una caracter
+          malicioso en la URL
+
+          <img src="/img/pen/16-bak.png" alt="">
+        </p>
+        <p>
+          Y ya se vuelve posible
+          <img src="/img/pen/15-back.png" alt="">
+        </p>
+
+        <h2>Conclusiones</h2>
+        <p>
+          Estas son solo algunas vulnerabilidades presentes en Juice Shop, pero
+          hacen muy claro como es que hay que preocuparse por garantizar la
+          seguridad de nuestros servicios, ya que, procedimientos para hacer
+          estos (y mas) ataques son muchos, por lo que vale la pena reflexionar
+          sobre si se vuelve vulnerable nuestra aplicación
+        </p>
+      </div>
+      <div class="w3-third w3-container">
+        <p class="w3-border w3-padding-large w3-padding-32 w3-center">AD</p>
+        <p class="w3-border w3-padding-large w3-padding-64 w3-center">AD</p>
+      </div>
+    </div>
+
+    <footer id="myFooter">
+      <div class="w3-container w3-theme-l2 w3-padding-32">
+        <h4>Footer</h4>
+      </div>
+
+      <div class="w3-container w3-theme-l1">
+        <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp"
+            target="_blank">w3.css</a></p>
+      </div>
+    </footer>
+
+    <!-- END MAIN -->
+  </div>
+  </div>
+
+  <script>
+    // Get the Sidebar
+    var mySidebar = document.getElementById("mySidebar");
+
+    // Get the DIV with overlay effect
+    var overlayBg = document.getElementById("myOverlay");
+
+    // Toggle between showing and hiding the sidebar, and add overlay effect
+    function w3_open() {
+      if (mySidebar.style.display === 'block') {
+        mySidebar.style.display = 'none';
+        overlayBg.style.display = "none";
+      } else {
+        mySidebar.style.display = 'block';
+        overlayBg.style.display = "block";
+      }
+    }
+
+    // Close the sidebar with the close button
+    function w3_close() {
+      mySidebar.style.display = "none";
+      overlayBg.style.display = "none";
+    }
+  </script>
+
+</body>
+
+</html>
